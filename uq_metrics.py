@@ -65,7 +65,7 @@ def evaulate_metrics_ensemble(
     rrmse = jnp.sqrt(jnp.mean((y_true - jnp.mean(y_means, axis=-2))**2, axis=-1)) / jnp.std(y_true, axis=-1, ddof=0)
 
     means = y_means.T
-    stds = jnp.broadcast_to(y_stds, means.shape)
+    stds = y_stds.T
 
     # number of samples-1000
     n_obs = len(y_true)
